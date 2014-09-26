@@ -15,7 +15,7 @@ $slick-dot-size: 6px !default;
 $opacity-default: .75;
 $opacity-on-hover: 1;
 $opacity-not-active: .25;
-
+$enable-null-transform-hack: true;
 
 @function slick-image-url($url) {
   @if function-exists(image-url) {
@@ -71,16 +71,20 @@ $opacity-not-active: .25;
         cursor: hand;
     }
 }
-.slick-slider .slick-list,
-.slick-track,
-.slick-slide,
-.slick-slide img {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+
+@if $enable-null-transform-hack {
+  .slick-slider .slick-list,
+  .slick-track,
+  .slick-slide,
+  .slick-slide img {
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+  }
 }
+
 .slick-track {
     position: relative;
     left: 0;
