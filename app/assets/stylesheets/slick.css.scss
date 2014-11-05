@@ -48,7 +48,8 @@ $enable-null-transform-hack: true !default;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    -ms-touch-action: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
 }
 .slick-list {
@@ -73,15 +74,12 @@ $enable-null-transform-hack: true !default;
 }
 
 @if $enable-null-transform-hack {
-  .slick-slider .slick-list,
-  .slick-track,
-  .slick-slide,
-  .slick-slide img {
-      -webkit-transform: translate3d(0, 0, 0);
-      -moz-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-      -o-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
+  .slick-slider .slick-track {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -90,7 +88,6 @@ $enable-null-transform-hack: true !default;
     left: 0;
     top: 0;
     display: block;
-    zoom: 1;
 
     &:before,
     &:after {
@@ -178,11 +175,11 @@ $enable-null-transform-hack: true !default;
       background: transparent;
       color: transparent;
       &:before {
-        opacity: $opacity-on-hover;
+        opacity: $slick-opacity-on-hover;
       }
     }
     &.slick-disabled:before {
-        opacity: $opacity-not-active;
+        opacity: $slick-opacity-not-active;
     }
 }
 .slick-prev:before, .slick-next:before {
@@ -190,7 +187,7 @@ $enable-null-transform-hack: true !default;
     font-size: 20px;
     line-height: 1;
     color: $slick-arrow-color;
-    opacity: $opacity-default;
+    opacity: $slick-opacity-default;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -259,7 +256,7 @@ $enable-null-transform-hack: true !default;
             &:hover, &:focus {
                 outline: none;
                 &:before {
-                  opacity: $opacity-on-hover;
+                  opacity: $slick-opacity-on-hover;
                 }
             }
 
@@ -275,7 +272,7 @@ $enable-null-transform-hack: true !default;
                 line-height: 20px;
                 text-align: center;
                 color: $slick-dot-color;
-                opacity: $opacity-not-active;
+                opacity: $slick-opacity-not-active;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
@@ -284,7 +281,7 @@ $enable-null-transform-hack: true !default;
 
         &.slick-active button:before {
             color: $slick-dot-color-active;
-            opacity: $opacity-default;
+            opacity: $slick-opacity-default;
         }
     }
 }
